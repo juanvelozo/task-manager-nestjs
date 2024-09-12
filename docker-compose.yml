@@ -1,0 +1,13 @@
+services:
+  task-manager-pg:
+    image: postgres:15.1
+    container_name: task-manager-pg
+    restart: always
+    environment:
+      POSTGRES_DB: task-manager-db
+      POSTGRES_USER: juan
+      POSTGRES_PASSWORD: SECRET1234
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
